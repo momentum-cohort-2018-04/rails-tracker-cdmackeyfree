@@ -4,7 +4,6 @@ class Api::V1::DogsController < ApplicationController
   # GET /dogs
   def index
     @dogs = Dog.all
-
     render json: @dogs
   end
 

@@ -7,22 +7,23 @@ class Api::V1::NotesController < ApplicationController
     end
 
     def create
-      @note= Note.new(note_params)
-      if @note.save!
-        render json: @note
-      else
-        render json: @note.errors, status: :unprocessable_entity
-      end
+        @dog = Dog.find(params[:dog_id])
+        @note= @dog.notes.build(note_params)
+        if @note.save
+            render json: @note
+        else
+            render json: @note.errors, status: :unprocessable_entity
+        end
     end
   
    
     def update
       @dog = Dog.find(params[:dog_id])
       @note = @dog.notes.find(params[:id])
-      if @dog.update(dog_params)
-        render json: @dog
+      if @note.update(note_params)
+        render json: @note
         else
-        render json: @dog.errors, status: :unprocessable_entity
+        render json: @note.errors, status: :unprocessable_entity
       end
     end
       
