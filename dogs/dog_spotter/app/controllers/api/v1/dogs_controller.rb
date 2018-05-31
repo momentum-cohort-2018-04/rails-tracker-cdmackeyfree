@@ -18,7 +18,7 @@ class Api::V1::DogsController < ApplicationController
     @dog = Dog.new(dog_params)
 
     if @dog.save
-      render json: @dog, status: :created, location: @dog
+      render json: @dog, status: :created, location: @dogs
     else
       render json: @dog.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::DogsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dog_params
-      params.require(:dog).permit(:name, :breed, :sound, :age, :gender, :coat_length, :size)
+      params.require(:dog).permit(:name, :breed, :sound, :age, :gender, :coat_length, :size, :note)
     end
 end

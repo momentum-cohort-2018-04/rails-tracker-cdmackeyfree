@@ -32,5 +32,6 @@ json.data do
         json.coat_length @dog.coat_length
         json.sound @dog.sound
         json.size @dog.size
+        json.note @dog.note
     end
 end
